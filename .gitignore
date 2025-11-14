@@ -1,0 +1,18 @@
+# .gitignore
+
+# Byte-code compilado ou cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Banco de dados
+*.sqlite3
+db.sqlite3
+
+# Ambientes virtuais
+venv/
+env/
+.venv/
+
+# Arquivos de sistema
+.DS_Store
