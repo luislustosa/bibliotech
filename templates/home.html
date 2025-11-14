@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiblioTech - Catálogo</title>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+
+    <style>
+        body { font-family: sans-serif; margin: 2rem; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        .container { max-width: 1200px; margin: auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>BiblioTech - Catálogo</h1>
+        <hr>
+
+        <table id="tabela-livros" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Gênero</th>
+                    <th>ISBN</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+
+    <script>
+        // Espera o documento estar pronto (padrão JQuery)
+        $(document).ready(function() {
+            
+            // Inicializa o DataTables na nossa tabela
+            $('#tabela-livros').DataTable({
+                "processing": true, 
+                "serverSide": false,
+                
+                "ajax": "/api/livros/", 
+
+                "columns": [
+                    { "data": "titulo" },
+                    { "data": "autor.nome" }, 
+                    { "data": "genero" },
+                    { "data": "isbn" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/2.0.8/i18n/pt-BR.json"
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
